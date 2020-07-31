@@ -1,0 +1,30 @@
+server: 
+  servlet:
+    context-path: /logs
+    session:
+      timeout: 1440m
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/logs?connectTimeout=10000&socketTimeout=10000&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+    driver-class-name: com.mysql.jdbc.Driver
+
+    hikari:
+      pool-name: Retail_HikariCP
+      minimum-idle: 5
+      idle-timeout: 180000
+      maximum-pool-size: 10
+      auto-commit: true
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: GMT+8
+mybatis:
+  config-location: classpath:sqlmapper/mybatis-config.xml
+  mapper-locations: classpath:sqlmapper/*Mapper.xml
+
+swagger:
+  enabled: true
